@@ -1,4 +1,4 @@
-// Time Complexity : O(n)
+// Time Complexity : O(1)
 // Space Complexity : O(1)
 class Stack {
     //Please read sample.java file before starting.
@@ -41,14 +41,8 @@ class Stack {
             return 0;
         }
 
-        //pop element from the start index and shift array elements to the left by one index
-        int poppedElement = a[0];
-        for(int i=1; i <= top; i++) {
-            a[i-1] = a[i];
-        }
-
-        return poppedElement;
-
+        //pop element from the end of the array
+        return a[top--];
     }
 
     int peek()

@@ -1,8 +1,8 @@
-// Time Complexity : O(n)
+// Time Complexity : O(1)
 // Space Complexity : O(1)
 class StackAsLinkedList {
 
-    StackNode root;
+    StackNode top;
 
     static class StackNode {
         int data;
@@ -20,7 +20,7 @@ class StackAsLinkedList {
     public boolean isEmpty()
     {
         //Write your code here for the condition if stack is empty.
-        return root == null;
+        return top == null;
 
     }
 
@@ -29,17 +29,13 @@ class StackAsLinkedList {
         //Write code to push data to the stack.
         StackNode newNode = new StackNode(data);
 
-        //If stack is empty, then make new node as the root, else add new node at the end
+        //If stack is empty, then make new node as the root, else add new node at the start
         if(isEmpty()) {
-            root = newNode;
+            top = newNode;
         }
         else {
-            StackNode current = root;
-            while(current.next != null) {
-                current = current.next;
-            }
-
-            current.next = newNode;
+            newNode.next = top;
+            top = newNode;
         }
 
     }
@@ -53,10 +49,10 @@ class StackAsLinkedList {
             return 0;
 
         //pop the element at the root
-        StackNode poppedNode = root;
+        StackNode poppedNode = top;
 
         //Update root to point to root.next
-        root = root.next;
+        top = top.next;
 
         return poppedNode.data;
 
@@ -65,7 +61,7 @@ class StackAsLinkedList {
     public int peek()
     {
         //Write code to just return the topmost element without removing it.
-        return root.data;
+        return top.data;
     }
 
     //Driver code
